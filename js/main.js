@@ -508,11 +508,314 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /* ---------- Quick View Modal ---------- */
+  var quickViewBtns = document.querySelectorAll('.quick-view-btn');
+  var quickViewModal = document.getElementById('quickViewModal');
+  var quickViewOverlay = document.getElementById('quickViewOverlay');
+  var quickViewClose = document.getElementById('quickViewClose');
+
+  function openQuickView(card) {
+    if (!quickViewModal) return;
+    var img = card.querySelector('.product-image img');
+    var name = card.querySelector('.product-info h3 a').textContent;
+    var category = card.querySelector('.product-category').textContent;
+    var priceEl = card.querySelector('.product-price .current');
+    var oldPriceEl = card.querySelector('.product-price .old');
+    var ratingEl = card.querySelector('.product-rating');
+    var addBtn = card.querySelector('.add-to-cart-btn');
+
+    var modalImg = quickViewModal.querySelector('.modal-image img');
+    var modalName = quickViewModal.querySelector('.modal-details h2');
+    var modalCategory = quickViewModal.querySelector('.modal-category');
+    var modalPrice = quickViewModal.querySelector('.modal-price .current');
+    var modalOldPrice = quickViewModal.querySelector('.modal-price .old');
+    var modalRating = quickViewModal.querySelector('.modal-rating');
+    var modalAddBtn = quickViewModal.querySelector('.modal-add-to-cart');
+
+    if (modalImg) modalImg.src = img.src.replace('w=400&h=400', 'w=600&h=600');
+    if (modalImg) modalImg.alt = name;
+    if (modalName) modalName.textContent = name;
+    if (modalCategory) modalCategory.textContent = category;
+    if (modalPrice && priceEl) modalPrice.textContent = priceEl.textContent;
+    if (modalOldPrice) {
+      if (oldPriceEl) {
+        modalOldPrice.textContent = oldPriceEl.textContent;
+        modalOldPrice.style.display = '';
+      } else {
+        modalOldPrice.textContent = '';
+        modalOldPrice.style.display = 'none';
+      }
+    }
+    if (modalRating && ratingEl) modalRating.innerHTML = ratingEl.innerHTML;
+    if (modalAddBtn && addBtn) {
+      modalAddBtn.setAttribute('data-name', addBtn.getAttribute('data-name'));
+      modalAddBtn.setAttribute('data-price', addBtn.getAttribute('data-price'));
+      modalAddBtn.setAttribute('data-img', addBtn.getAttribute('data-img'));
+    }
+
+    // Reset qty
+    var qtyInput = quickViewModal.querySelector('.qty-value');
+    if (qtyInput) qtyInput.textContent = '1';
+
+    quickViewModal.classList.add('active');
+    if (quickViewOverlay) quickViewOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuickView() {
+    if (quickViewModal) quickViewModal.classList.remove('active');
+    if (quickViewOverlay) quickViewOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  for (var qv = 0; qv < quickViewBtns.length; qv++) {
+    quickViewBtns[qv].addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var card = this.closest('.product-card');
+      if (card) openQuickView(card);
+    });
+  }
+
+  if (quickViewClose) quickViewClose.addEventListener('click', closeQuickView);
+  if (quickViewOverlay) quickViewOverlay.addEventListener('click', closeQuickView);
+
+  // Modal qty controls
+  if (quickViewModal) {
+    var qtyMinus = quickViewModal.querySelector('.qty-minus');
+    var qtyPlus = quickViewModal.querySelector('.qty-plus');
+    var qtyVal = quickViewModal.querySelector('.qty-value');
+
+    if (qtyMinus) {
+      qtyMinus.addEventListener('click', function () {
+        var val = parseInt(qtyVal.textContent, 10);
+        if (val > 1) qtyVal.textContent = val - 1;
+      });
+    }
+    if (qtyPlus) {
+      qtyPlus.addEventListener('click', function () {
+        var val = parseInt(qtyVal.textContent, 10);
+        qtyVal.textContent = val + 1;
+      });
+    }
+
+    var modalAddBtn = quickViewModal.querySelector('.modal-add-to-cart');
+    if (modalAddBtn) {
+      modalAddBtn.addEventListener('click', function () {
+        var name = this.getAttribute('data-name');
+        var price = this.getAttribute('data-price');
+        var img = this.getAttribute('data-img');
+        var qty = parseInt(qtyVal.textContent, 10) || 1;
+        for (var q = 0; q < qty; q++) {
+          addToCart(name, price, img);
+        }
+        closeQuickView();
+      });
+    }
+  }
+
+  /* ---------- Search Overlay ---------- */
+  var searchToggle = document.getElementById('searchToggle');
+  var searchOverlay = document.getElementById('searchOverlay');
+  var searchClose = document.getElementById('searchClose');
+  var searchInput = document.getElementById('searchInput');
+  var searchResults = document.getElementById('searchResults');
+
+  var allProducts = [
+    { name: 'Organik Pamuk Kumaş', category: 'Pamuk', price: '189.90', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100&h=100&fit=crop' },
+    { name: 'Saf İpek Saten', category: 'İpek', price: '459.90', img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=100&h=100&fit=crop' },
+    { name: 'Premium Keten', category: 'Keten', price: '279.90', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=100&h=100&fit=crop' },
+    { name: 'Merinos Yünü', category: 'Yün', price: '349.90', img: 'https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=100&h=100&fit=crop' },
+    { name: 'Denim Kumaş', category: 'Pamuk', price: '159.90', img: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=100&h=100&fit=crop' },
+    { name: 'İpek Şifon', category: 'İpek', price: '389.90', img: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=100&h=100&fit=crop' },
+    { name: 'Fransız Keteni', category: 'Keten', price: '329.90', img: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=100&h=100&fit=crop' },
+    { name: 'Kaşmir Yünü', category: 'Yün', price: '599.90', img: 'https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=100&h=100&fit=crop' },
+    { name: 'Polyester Krep', category: 'Polyester', price: '129.90', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&h=100&fit=crop' },
+    { name: 'Gabardin Kumaş', category: 'Pamuk', price: '219.90', img: 'https://images.unsplash.com/photo-1553531384-cc64ac80f931?w=100&h=100&fit=crop' },
+    { name: 'Dupion İpek', category: 'İpek', price: '529.90', img: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=100&h=100&fit=crop' },
+    { name: 'Scuba Kumaş', category: 'Polyester', price: '149.90', img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=100&h=100&fit=crop' }
+  ];
+
+  function openSearch() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () {
+      if (searchInput) searchInput.focus();
+    }, 300);
+  }
+
+  function closeSearch() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (searchInput) searchInput.value = '';
+    if (searchResults) searchResults.innerHTML = '';
+  }
+
+  if (searchToggle) {
+    searchToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      openSearch();
+    });
+  }
+
+  if (searchClose) searchClose.addEventListener('click', closeSearch);
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      var query = this.value.toLocaleLowerCase('tr-TR').trim();
+      if (!searchResults) return;
+
+      if (query.length < 2) {
+        searchResults.innerHTML = '<p class="search-hint">Aramak için en az 2 karakter yazın...</p>';
+        return;
+      }
+
+      var results = allProducts.filter(function (p) {
+        var pName = p.name.toLocaleLowerCase('tr-TR');
+        var pCat = p.category.toLocaleLowerCase('tr-TR');
+        var q = query.toLocaleLowerCase('tr-TR');
+        return pName.indexOf(q) !== -1 || pCat.indexOf(q) !== -1;
+      });
+
+      if (results.length === 0) {
+        searchResults.innerHTML = '<p class="search-no-result">Sonuç bulunamadı. Farklı bir arama terimi deneyin.</p>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < results.length; i++) {
+        var p = results[i];
+        html += '<div class="search-result-item">' +
+          '<img src="' + p.img + '" alt="' + p.name + '">' +
+          '<div class="search-result-info">' +
+          '<h4>' + p.name + '</h4>' +
+          '<p>' + p.category + '</p>' +
+          '<span class="search-result-price">₺' + p.price + '</span>' +
+          '</div>' +
+          '<button class="btn btn-primary search-add-cart" data-name="' + p.name + '" data-price="' + p.price + '" data-img="' + p.img + '">Sepete Ekle</button>' +
+          '</div>';
+      }
+      searchResults.innerHTML = html;
+
+      // Add event listeners to search result cart buttons
+      var searchCartBtns = searchResults.querySelectorAll('.search-add-cart');
+      for (var sc = 0; sc < searchCartBtns.length; sc++) {
+        searchCartBtns[sc].addEventListener('click', function () {
+          addToCart(this.getAttribute('data-name'), this.getAttribute('data-price'), this.getAttribute('data-img'));
+          closeSearch();
+        });
+      }
+    });
+  }
+
+  /* ---------- Pagination ---------- */
+  var paginationLinks = document.querySelectorAll('.pagination a');
+  if (paginationLinks.length > 0) {
+    var productsPerPage = 12;
+    var allProductCards = document.querySelectorAll('.products-page-grid .product-card');
+    var currentPage = 1;
+    var totalPages = Math.ceil(allProductCards.length / productsPerPage) || 1;
+
+    function showPage(page) {
+      currentPage = page;
+      var start = (page - 1) * productsPerPage;
+      var end = start + productsPerPage;
+
+      for (var i = 0; i < allProductCards.length; i++) {
+        if (i >= start && i < end) {
+          allProductCards[i].style.display = '';
+          allProductCards[i].style.opacity = '0';
+          allProductCards[i].style.transform = 'translateY(20px)';
+          setTimeout((function (c) {
+            return function () {
+              c.style.opacity = '1';
+              c.style.transform = 'translateY(0)';
+              c.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            };
+          })(allProductCards[i]), 50);
+        } else {
+          allProductCards[i].style.display = 'none';
+        }
+      }
+
+      // Update active class on pagination
+      for (var j = 0; j < paginationLinks.length; j++) {
+        paginationLinks[j].classList.remove('active');
+      }
+      // Find the clicked page number link
+      for (var k = 0; k < paginationLinks.length; k++) {
+        if (paginationLinks[k].textContent.trim() === String(page)) {
+          paginationLinks[k].classList.add('active');
+        }
+      }
+
+      // Update result count
+      var visibleCount = 0;
+      for (var v = 0; v < allProductCards.length; v++) {
+        if (allProductCards[v].style.display !== 'none') visibleCount++;
+      }
+      var resultCount = document.querySelector('.result-count');
+      if (resultCount) {
+        resultCount.innerHTML = 'Toplam <strong>' + visibleCount + '</strong> / ' + allProductCards.length + ' ürün gösteriliyor';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    for (var pg = 0; pg < paginationLinks.length; pg++) {
+      paginationLinks[pg].addEventListener('click', function (e) {
+        e.preventDefault();
+        var text = this.textContent.trim();
+        var icon = this.querySelector('i');
+        if (icon) {
+          // Next/prev arrow
+          if (icon.classList.contains('fa-chevron-right') && currentPage < totalPages) {
+            showPage(currentPage + 1);
+          } else if (icon.classList.contains('fa-chevron-left') && currentPage > 1) {
+            showPage(currentPage - 1);
+          }
+        } else {
+          var pageNum = parseInt(text, 10);
+          if (!isNaN(pageNum)) showPage(pageNum);
+        }
+      });
+    }
+  }
+
+  /* ---------- URL Filter Parameter ---------- */
+  var urlParams = new URLSearchParams(window.location.search);
+  var filterParam = urlParams.get('filter');
+  if (filterParam && filterBtns.length > 0) {
+    for (var fp = 0; fp < filterBtns.length; fp++) {
+      if (filterBtns[fp].getAttribute('data-filter') === filterParam) {
+        filterBtns[fp].click();
+        break;
+      }
+    }
+  }
+
+  /* ---------- Checkout Button ---------- */
+  var checkoutBtns = document.querySelectorAll('.cart-footer .btn-primary');
+  for (var cb = 0; cb < checkoutBtns.length; cb++) {
+    checkoutBtns[cb].addEventListener('click', function (e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        showNotification('Sepetiniz boş! Lütfen ürün ekleyin.');
+        return;
+      }
+      closeCart();
+      window.location.href = 'checkout.html';
+    });
+  }
+
   /* ---------- Keyboard Accessibility ---------- */
   document.addEventListener('keydown', function (e) {
-    // Close cart with Escape
     if (e.key === 'Escape') {
       closeCart();
+      closeQuickView();
+      closeSearch();
     }
   });
 

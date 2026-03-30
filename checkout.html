@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TextilCraft - Ödeme sayfası. Siparişinizi tamamlayın.">
+  <title>Ödeme | TextilCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header scrolled" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">Tekstil<span>Craft</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="products.html">Ürünler</a></li>
+          <li><a href="about.html">Hakkımızda</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
+        <a href="#" id="cartToggle" class="cart-icon">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="hero-bg-pattern"></div>
+    <h1>Ödeme</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Ana Sayfa</a>
+      <span>/</span>
+      <a href="products.html">Ürünler</a>
+      <span>/</span>
+      <span class="current">Ödeme</span>
+    </div>
+  </section>
+
+  <!-- Checkout Section -->
+  <section class="checkout-section">
+    <div class="container">
+      <div class="checkout-grid">
+        <!-- Checkout Form -->
+        <div class="checkout-form">
+          <h3><i class="fas fa-user" style="margin-right: 10px; color: var(--accent);"></i>Teslimat Bilgileri</h3>
+          <form id="checkoutForm">
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div class="form-group">
+                <label for="firstName">Ad *</label>
+                <input type="text" id="firstName" placeholder="Adınız" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Soyad *</label>
+                <input type="text" id="lastName" placeholder="Soyadınız" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta *</label>
+              <input type="email" id="email" placeholder="ornek@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" placeholder="+90 (5XX) XXX XX XX" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Adres *</label>
+              <input type="text" id="address" placeholder="Sokak, Mahalle, Bina No" required>
+            </div>
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div class="form-group">
+                <label for="city">Şehir *</label>
+                <select id="city" required>
+                  <option value="">Şehir Seçin</option>
+                  <option value="istanbul">İstanbul</option>
+                  <option value="ankara">Ankara</option>
+                  <option value="izmir">İzmir</option>
+                  <option value="bursa">Bursa</option>
+                  <option value="antalya">Antalya</option>
+                  <option value="adana">Adana</option>
+                  <option value="konya">Konya</option>
+                  <option value="gaziantep">Gaziantep</option>
+                  <option value="diger">Diğer</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="zip">Posta Kodu *</label>
+                <input type="text" id="zip" placeholder="34000" required>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 400;">
+                <input type="checkbox" id="saveInfo" style="accent-color: var(--accent); width: 18px; height: 18px;">
+                Bilgilerimi sonraki siparişlerim için kaydet
+              </label>
+            </div>
+
+            <h3 style="margin-top: 35px;"><i class="fas fa-credit-card" style="margin-right: 10px; color: var(--accent);"></i>Ödeme Yöntemi</h3>
+            <div class="payment-methods">
+              <div class="payment-option selected" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="credit" checked>
+                <i class="fas fa-credit-card"></i>
+                <span>Kredi / Banka Kartı</span>
+              </div>
+              <div class="payment-option" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="transfer">
+                <i class="fas fa-university"></i>
+                <span>Havale / EFT</span>
+              </div>
+              <div class="payment-option" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="door">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Kapıda Ödeme (+₺15.00)</span>
+              </div>
+            </div>
+
+            <div id="creditCardFields" style="margin-top: 20px;">
+              <div class="form-group">
+                <label for="cardNumber">Kart Numarası *</label>
+                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+              </div>
+              <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                  <label for="cardExpiry">Son Kullanma *</label>
+                  <input type="text" id="cardExpiry" placeholder="AA/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label for="cardCvv">CVV *</label>
+                  <input type="text" id="cardCvv" placeholder="XXX" maxlength="3">
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary checkout-btn">
+              <i class="fas fa-lock" style="margin-right: 8px;"></i>Siparişi Tamamla
+            </button>
+          </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="checkout-summary">
+          <h3><i class="fas fa-shopping-bag" style="margin-right: 10px; color: var(--accent);"></i>Sipariş Özeti</h3>
+          <div class="checkout-items" id="checkoutItems">
+            <!-- Items will be populated by JS -->
+          </div>
+          <div class="checkout-totals">
+            <div class="total-row">
+              <span>Ara Toplam</span>
+              <span id="checkoutSubtotal">₺0.00</span>
+            </div>
+            <div class="total-row">
+              <span>Kargo</span>
+              <span id="checkoutShipping">Ücretsiz</span>
+            </div>
+            <div class="total-row">
+              <span>KDV (%20)</span>
+              <span id="checkoutTax">₺0.00</span>
+            </div>
+            <div class="total-row grand-total">
+              <span>Toplam</span>
+              <span id="checkoutGrandTotal">₺0.00</span>
+            </div>
+          </div>
+          <div style="margin-top: 20px; padding: 15px; background: rgba(201,169,110,0.1); border-radius: 8px; text-align: center;">
+            <i class="fas fa-shield-alt" style="color: var(--accent); font-size: 1.2rem;"></i>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: var(--text-muted);">256-bit SSL ile güvenli ödeme</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">Tekstil<span>Craft</span></div>
+          <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com/company/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Linkler</h4>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="products.html">Ürünler</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kategoriler</h4>
+          <ul>
+            <li><a href="products.html?filter=pamuk">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html?filter=ipek">İpek Kumaşlar</a></li>
+            <li><a href="products.html?filter=keten">Keten Kumaşlar</a></li>
+            <li><a href="products.html?filter=yun">Yün Kumaşlar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Tekstil Merkezi, Osmanbey Cad. No:42, İstanbul, Türkiye</li>
+            <li><i class="fas fa-phone"></i> +90 (212) 555 42 42</li>
+            <li><i class="fas fa-envelope"></i> info@tekstilcraft.com</li>
+            <li><i class="fas fa-clock"></i> Pzt - Cmt: 09:00 - 18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 TextilCraft. Tüm hakları saklıdır.</p>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Sepetim (<span id="cartItemCount">0</span>)</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <i class="fas fa-shopping-bag"></i>
+        <p>Sepetiniz boş</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Toplam:</span>
+        <span id="cartTotal">₺0.00</span>
+      </div>
+      <a href="checkout.html" class="btn btn-primary">Ödemeye Geç</a>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose">&times;</button>
+    <h2>Ne Aramıştınız?</h2>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* Checkout Page Logic */
+    (function () {
+      var cart = JSON.parse(localStorage.getItem('textilcraft_cart') || '[]');
+
+      if (cart.length === 0) {
+        document.querySelector('.checkout-grid').innerHTML =
+          '<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">' +
+          '<i class="fas fa-shopping-bag" style="font-size: 4rem; color: var(--border); margin-bottom: 20px;"></i>' +
+          '<h2 style="margin-bottom: 15px;">Sepetiniz Boş</h2>' +
+          '<p style="color: var(--text-muted); margin-bottom: 25px;">Ödeme yapabilmek için sepetinize ürün eklemelisiniz.</p>' +
+          '<a href="products.html" class="btn btn-primary">Alışverişe Başla</a></div>';
+        return;
+      }
+
+      // Populate order items
+      var itemsHtml = '';
+      var subtotal = 0;
+
+      // Group items
+      var grouped = {};
+      for (var i = 0; i < cart.length; i++) {
+        var key = cart[i].name;
+        if (!grouped[key]) {
+          grouped[key] = { name: cart[i].name, price: cart[i].price, img: cart[i].img, qty: 0 };
+        }
+        grouped[key].qty++;
+      }
+
+      for (var k in grouped) {
+        var item = grouped[k];
+        var itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        itemsHtml += '<div class="checkout-item">' +
+          '<img src="' + item.img + '" alt="' + item.name + '">' +
+          '<div class="checkout-item-info">' +
+          '<h4>' + item.name + '</h4>' +
+          '<p>Adet: ' + item.qty + '</p>' +
+          '</div>' +
+          '<span class="checkout-item-price">₺' + itemTotal.toFixed(2) + '</span>' +
+          '</div>';
+      }
+
+      document.getElementById('checkoutItems').innerHTML = itemsHtml;
+
+      var shipping = subtotal >= 500 ? 0 : 29.90;
+      var tax = subtotal * 0.20;
+      var grandTotal = subtotal + shipping + tax;
+
+      document.getElementById('checkoutSubtotal').textContent = '₺' + subtotal.toFixed(2);
+      document.getElementById('checkoutShipping').textContent = shipping === 0 ? 'Ücretsiz' : '₺' + shipping.toFixed(2);
+      document.getElementById('checkoutTax').textContent = '₺' + tax.toFixed(2);
+      document.getElementById('checkoutGrandTotal').textContent = '₺' + grandTotal.toFixed(2);
+
+      // Card number formatting
+      var cardNum = document.getElementById('cardNumber');
+      if (cardNum) {
+        cardNum.addEventListener('input', function () {
+          var val = this.value.replace(/\D/g, '').substring(0, 16);
+          var formatted = val.replace(/(\d{4})(?=\d)/g, '$1 ');
+          this.value = formatted;
+        });
+      }
+
+      // Expiry formatting
+      var cardExp = document.getElementById('cardExpiry');
+      if (cardExp) {
+        cardExp.addEventListener('input', function () {
+          var val = this.value.replace(/\D/g, '').substring(0, 4);
+          if (val.length > 2) val = val.substring(0, 2) + '/' + val.substring(2);
+          this.value = val;
+        });
+      }
+
+      // Payment method toggle
+      window.selectPayment = function (el) {
+        var options = document.querySelectorAll('.payment-option');
+        for (var p = 0; p < options.length; p++) {
+          options[p].classList.remove('selected');
+          options[p].querySelector('input').checked = false;
+        }
+        el.classList.add('selected');
+        el.querySelector('input').checked = true;
+
+        var ccFields = document.getElementById('creditCardFields');
+        var method = el.querySelector('input').value;
+        if (ccFields) {
+          ccFields.style.display = method === 'credit' ? '' : 'none';
+        }
+
+        // Update door payment surcharge
+        var shippingEl = document.getElementById('checkoutShipping');
+        var grandEl = document.getElementById('checkoutGrandTotal');
+        var doorFee = method === 'door' ? 15 : 0;
+        var newGrand = subtotal + shipping + tax + doorFee;
+        grandEl.textContent = '₺' + newGrand.toFixed(2);
+      };
+
+      // Form submission
+      var checkoutForm = document.getElementById('checkoutForm');
+      if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var firstName = document.getElementById('firstName').value.trim();
+          var lastName = document.getElementById('lastName').value.trim();
+          var email = document.getElementById('email').value.trim();
+          var phone = document.getElementById('phone').value.trim();
+          var address = document.getElementById('address').value.trim();
+          var city = document.getElementById('city').value;
+
+          if (!firstName || !lastName || !email || !phone || !address || !city) {
+            alert('Lütfen tüm zorunlu alanları doldurun.');
+            return;
+          }
+
+          // Simulate order
+          localStorage.removeItem('textilcraft_cart');
+
+          document.querySelector('.checkout-grid').innerHTML =
+            '<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">' +
+            '<i class="fas fa-check-circle" style="font-size: 5rem; color: #27ae60; margin-bottom: 20px;"></i>' +
+            '<h2 style="margin-bottom: 15px;">Siparişiniz Alındı!</h2>' +
+            '<p style="color: var(--text-muted); margin-bottom: 10px;">Sipariş numaranız: <strong>TC-' + Date.now().toString().slice(-6) + '</strong></p>' +
+            '<p style="color: var(--text-muted); margin-bottom: 25px;">Sipariş detayları <strong>' + email + '</strong> adresine gönderildi.</p>' +
+            '<a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>' +
+            '&nbsp;&nbsp;' +
+            '<a href="products.html" class="btn btn-dark">Alışverişe Devam Et</a></div>';
+
+          // Update cart count in header
+          var cartCountEl = document.getElementById('cartCount');
+          if (cartCountEl) cartCountEl.textContent = '0';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

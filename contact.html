@@ -168,7 +168,7 @@
 
   <!-- Map Section -->
   <section class="map-section">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.7!2d28.9!3d41.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAzJzAwLjAiTiAyOMKwNTQnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="TextilCraft Konum"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.1!2d28.9874!3d41.0522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a3e6a5ef61%3A0x56ac2b29f0e3e4e1!2sOsmanbey%2C%20%C5%9Ei%C5%9Fli%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="TextilCraft Konum"></iframe>
   </section>
 
   <!-- FAQ Section -->
@@ -239,11 +239,11 @@
           <div class="footer-logo">Tekstil<span>Craft</span></div>
           <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com/company/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -258,10 +258,10 @@
         <div class="footer-col">
           <h4>Kategoriler</h4>
           <ul>
-            <li><a href="products.html">Pamuklu Kumaşlar</a></li>
-            <li><a href="products.html">İpek Kumaşlar</a></li>
-            <li><a href="products.html">Keten Kumaşlar</a></li>
-            <li><a href="products.html">Yün Kumaşlar</a></li>
+            <li><a href="products.html?filter=pamuk">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html?filter=ipek">İpek Kumaşlar</a></li>
+            <li><a href="products.html?filter=keten">Keten Kumaşlar</a></li>
+            <li><a href="products.html?filter=yun">Yün Kumaşlar</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -304,8 +304,19 @@
         <span>Toplam:</span>
         <span id="cartTotal">₺0.00</span>
       </div>
-      <a href="#" class="btn btn-primary">Ödemeye Geç</a>
+      <a href="checkout.html" class="btn btn-primary">Ödemeye Geç</a>
     </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose">&times;</button>
+    <h2>Ne Aramıştınız?</h2>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results" id="searchResults"></div>
   </div>
 
   <!-- Back to Top -->

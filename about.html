@@ -287,11 +287,11 @@
           <div class="footer-logo">Tekstil<span>Craft</span></div>
           <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com/company/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -306,10 +306,10 @@
         <div class="footer-col">
           <h4>Kategoriler</h4>
           <ul>
-            <li><a href="products.html">Pamuklu Kumaşlar</a></li>
-            <li><a href="products.html">İpek Kumaşlar</a></li>
-            <li><a href="products.html">Keten Kumaşlar</a></li>
-            <li><a href="products.html">Yün Kumaşlar</a></li>
+            <li><a href="products.html?filter=pamuk">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html?filter=ipek">İpek Kumaşlar</a></li>
+            <li><a href="products.html?filter=keten">Keten Kumaşlar</a></li>
+            <li><a href="products.html?filter=yun">Yün Kumaşlar</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -352,8 +352,19 @@
         <span>Toplam:</span>
         <span id="cartTotal">₺0.00</span>
       </div>
-      <a href="#" class="btn btn-primary">Ödemeye Geç</a>
+      <a href="checkout.html" class="btn btn-primary">Ödemeye Geç</a>
     </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose">&times;</button>
+    <h2>Ne Aramıştınız?</h2>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results" id="searchResults"></div>
   </div>
 
   <!-- Back to Top -->
