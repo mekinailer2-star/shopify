@@ -62,8 +62,8 @@
       <div class="contact-grid">
         <!-- Contact Info -->
         <div class="fade-in-left">
-          <h2 style="margin-bottom: 10px;">Bizimle İletişime Geçin</h2>
-          <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">Sorularınız, önerileriniz veya toptan sipariş talepleriniz için bizimle iletişime geçebilirsiniz. Uzman ekibimiz size en kısa sürede dönüş yapacaktır.</p>
+          <h2 class="contact-heading">Bizimle İletişime Geçin</h2>
+          <p class="contact-subtext">Sorularınız, önerileriniz veya toptan sipariş talepleriniz için bizimle iletişime geçebilirsiniz. Uzman ekibimiz size en kısa sürede dönüş yapacaktır.</p>
           
           <div class="contact-info-cards">
             <div class="contact-info-card">
@@ -105,14 +105,14 @@
           </div>
 
           <!-- Social Media -->
-          <div style="margin-top: 20px;">
-            <h4 style="margin-bottom: 15px; font-family: var(--font-body); font-weight: 600;">Sosyal Medya</h4>
+          <div class="contact-social-wrap">
+            <h4 class="contact-social-title">Sosyal Medya</h4>
             <div class="footer-social">
-              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-instagram"></i></a>
-              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-twitter"></i></a>
-              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-whatsapp"></i></a>
-              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
@@ -178,41 +178,41 @@
         <h2>Sıkça Sorulan Sorular</h2>
         <p>En çok merak edilen sorular ve cevapları</p>
       </div>
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
-          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
-            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Minimum sipariş miktarı ne kadardır?</h4>
-            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+      <div class="faq-container">
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h4>Minimum sipariş miktarı ne kadardır?</h4>
+            <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Perakende siparişlerde minimum sipariş miktarı bulunmamaktadır. Toptan siparişlerde ise minimum 50 metre kumaş siparişi alınmaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
-          </div>
-        </div>
-        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
-          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
-            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Kargo süresi ne kadardır?</h4>
-            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
-          </div>
-          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">İstanbul içi siparişler 1-2 iş günü, yurt içi siparişler 3-5 iş günü, yurt dışı siparişler ise 7-14 iş günü içinde teslim edilmektedir.</p>
+          <div class="faq-answer">
+            <p>Perakende siparişlerde minimum sipariş miktarı bulunmamaktadır. Toptan siparişlerde ise minimum 50 metre kumaş siparişi alınmaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
           </div>
         </div>
-        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
-          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
-            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">İade ve değişim politikası nedir?</h4>
-            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h4>Kargo süresi ne kadardır?</h4>
+            <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Ürünlerimizi teslim aldığınız tarihten itibaren 14 gün içinde iade edebilirsiniz. Kesilmiş veya kullanılmış kumaşlar iade kapsamı dışındadır. Üretim hatası bulunan ürünlerde koşulsuz iade garantisi sunuyoruz.</p>
+          <div class="faq-answer">
+            <p>İstanbul içi siparişler 1-2 iş günü, yurt içi siparişler 3-5 iş günü, yurt dışı siparişler ise 7-14 iş günü içinde teslim edilmektedir.</p>
           </div>
         </div>
-        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
-          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
-            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Kumaş numunesi alabilir miyim?</h4>
-            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h4>İade ve değişim politikası nedir?</h4>
+            <i class="fas fa-chevron-down"></i>
           </div>
-          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
-            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Evet, tüm kumaş çeşitlerimizden ücretsiz numune gönderimi yapıyoruz. Numune talebi için iletişim formumuzu doldurabilir veya doğrudan bizi arayabilirsiniz.</p>
+          <div class="faq-answer">
+            <p>Ürünlerimizi teslim aldığınız tarihten itibaren 14 gün içinde iade edebilirsiniz. Kesilmiş veya kullanılmış kumaşlar iade kapsamı dışındadır. Üretim hatası bulunan ürünlerde koşulsuz iade garantisi sunuyoruz.</p>
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <h4>Kumaş numunesi alabilir miyim?</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Evet, tüm kumaş çeşitlerimizden ücretsiz numune gönderimi yapıyoruz. Numune talebi için iletişim formumuzu doldurabilir veya doğrudan bizi arayabilirsiniz.</p>
           </div>
         </div>
       </div>

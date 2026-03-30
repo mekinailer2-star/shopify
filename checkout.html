@@ -13,6 +13,11 @@
 </head>
 <body>
 
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
   <!-- Header -->
   <header class="header scrolled" id="header">
     <div class="container">
@@ -113,17 +118,17 @@
 
             <h3 style="margin-top: 35px;"><i class="fas fa-credit-card" style="margin-right: 10px; color: var(--accent);"></i>Ödeme Yöntemi</h3>
             <div class="payment-methods">
-              <div class="payment-option selected" onclick="selectPayment(this)">
+              <div class="payment-option selected">
                 <input type="radio" name="payment" value="credit" checked>
                 <i class="fas fa-credit-card"></i>
                 <span>Kredi / Banka Kartı</span>
               </div>
-              <div class="payment-option" onclick="selectPayment(this)">
+              <div class="payment-option">
                 <input type="radio" name="payment" value="transfer">
                 <i class="fas fa-university"></i>
                 <span>Havale / EFT</span>
               </div>
-              <div class="payment-option" onclick="selectPayment(this)">
+              <div class="payment-option">
                 <input type="radio" name="payment" value="door">
                 <i class="fas fa-money-bill-wave"></i>
                 <span>Kapıda Ödeme (+₺15.00)</span>
@@ -355,7 +360,7 @@
       }
 
       // Payment method toggle
-      window.selectPayment = function (el) {
+      function selectPayment(el) {
         var options = document.querySelectorAll('.payment-option');
         for (var p = 0; p < options.length; p++) {
           options[p].classList.remove('selected');
@@ -371,12 +376,19 @@
         }
 
         // Update door payment surcharge
-        var shippingEl = document.getElementById('checkoutShipping');
         var grandEl = document.getElementById('checkoutGrandTotal');
         var doorFee = method === 'door' ? 15 : 0;
         var newGrand = subtotal + shipping + tax + doorFee;
         grandEl.textContent = '₺' + newGrand.toFixed(2);
-      };
+      }
+
+      // Attach click handlers to payment options
+      var paymentOptions = document.querySelectorAll('.payment-option');
+      for (var po = 0; po < paymentOptions.length; po++) {
+        paymentOptions[po].addEventListener('click', function () {
+          selectPayment(this);
+        });
+      }
 
       // Form submission
       var checkoutForm = document.getElementById('checkoutForm');
