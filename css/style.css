@@ -1126,9 +1126,11 @@ p {
 
 .footer-bottom .payment-icons .troy-icon {
   width: 1.8rem;
-  height: 1.8rem;
+  height: auto;
+  max-height: 1.8rem;
   color: rgba(255, 255, 255, 0.3);
   vertical-align: middle;
+  display: inline-block;
 }
 
 /* ---------- Back to Top ---------- */
