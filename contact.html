@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TextilCraft - Bizimle iletişime geçin. Sorularınız ve siparişleriniz için buradayız.">
+  <title>İletişim | TextilCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header scrolled" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">Tekstil<span>Craft</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="products.html">Ürünler</a></li>
+          <li><a href="about.html">Hakkımızda</a></li>
+          <li><a href="contact.html" class="active">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
+        <a href="#" id="cartToggle" class="cart-icon">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="hero-bg-pattern"></div>
+    <h1>İletişim</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Ana Sayfa</a>
+      <span>/</span>
+      <span class="current">İletişim</span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="fade-in-left">
+          <h2 style="margin-bottom: 10px;">Bizimle İletişime Geçin</h2>
+          <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">Sorularınız, önerileriniz veya toptan sipariş talepleriniz için bizimle iletişime geçebilirsiniz. Uzman ekibimiz size en kısa sürede dönüş yapacaktır.</p>
+          
+          <div class="contact-info-cards">
+            <div class="contact-info-card">
+              <div class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4>Adres</h4>
+                <p>Tekstil Merkezi, Osmanbey Cad. No:42<br>Şişli, İstanbul, Türkiye</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h4>Telefon</h4>
+                <p>+90 (212) 555 42 42<br>+90 (532) 555 42 42</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h4>E-Posta</h4>
+                <p>info@tekstilcraft.com<br>siparis@tekstilcraft.com</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h4>Çalışma Saatleri</h4>
+                <p>Pazartesi - Cumartesi: 09:00 - 18:00<br>Pazar: Kapalı</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div style="margin-top: 20px;">
+            <h4 style="margin-bottom: 15px; font-family: var(--font-body); font-weight: 600;">Sosyal Medya</h4>
+            <div class="footer-social">
+              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-instagram"></i></a>
+              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-twitter"></i></a>
+              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" style="border-color: var(--border); color: var(--text-muted);"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form fade-in-right">
+          <h3>Mesaj Gönderin</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">Adınız *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Adınız" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Soyadınız *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Soyadınız" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-Posta *</label>
+                <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="Telefon numaranız">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Konu *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Konu Seçin</option>
+                <option value="genel">Genel Bilgi</option>
+                <option value="siparis">Sipariş Bilgisi</option>
+                <option value="toptan">Toptan Satış</option>
+                <option value="iade">İade ve Değişim</option>
+                <option value="isbirligi">İş Birliği</option>
+                <option value="diger">Diğer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mesajınız *</label>
+              <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">
+              <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Mesaj Gönder
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.7!2d28.9!3d41.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAzJzAwLjAiTiAyOMKwNTQnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="TextilCraft Konum"></iframe>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>En çok merak edilen sorular ve cevapları</p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
+          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Minimum sipariş miktarı ne kadardır?</h4>
+            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+          </div>
+          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Perakende siparişlerde minimum sipariş miktarı bulunmamaktadır. Toptan siparişlerde ise minimum 50 metre kumaş siparişi alınmaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
+          </div>
+        </div>
+        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
+          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Kargo süresi ne kadardır?</h4>
+            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+          </div>
+          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">İstanbul içi siparişler 1-2 iş günü, yurt içi siparişler 3-5 iş günü, yurt dışı siparişler ise 7-14 iş günü içinde teslim edilmektedir.</p>
+          </div>
+        </div>
+        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
+          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">İade ve değişim politikası nedir?</h4>
+            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+          </div>
+          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Ürünlerimizi teslim aldığınız tarihten itibaren 14 gün içinde iade edebilirsiniz. Kesilmiş veya kullanılmış kumaşlar iade kapsamı dışındadır. Üretim hatası bulunan ürünlerde koşulsuz iade garantisi sunuyoruz.</p>
+          </div>
+        </div>
+        <div class="faq-item fade-in" style="background: white; padding: 25px 30px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;">
+          <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem;">Kumaş numunesi alabilir miyim?</h4>
+            <i class="fas fa-chevron-down" style="color: var(--accent); transition: transform 0.3s;"></i>
+          </div>
+          <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p style="padding-top: 15px; font-size: 0.95rem; line-height: 1.8;">Evet, tüm kumaş çeşitlerimizden ücretsiz numune gönderimi yapıyoruz. Numune talebi için iletişim formumuzu doldurabilir veya doğrudan bizi arayabilirsiniz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container fade-in">
+      <h2>Bültenimize Abone Olun</h2>
+      <p>Yeni koleksiyonlar ve özel indirimlerden ilk siz haberdar olun</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="E-posta adresiniz" required>
+        <button type="submit" class="btn">Abone Ol</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">Tekstil<span>Craft</span></div>
+          <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Linkler</h4>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="products.html">Ürünler</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kategoriler</h4>
+          <ul>
+            <li><a href="products.html">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html">İpek Kumaşlar</a></li>
+            <li><a href="products.html">Keten Kumaşlar</a></li>
+            <li><a href="products.html">Yün Kumaşlar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Tekstil Merkezi, Osmanbey Cad. No:42, İstanbul, Türkiye</li>
+            <li><i class="fas fa-phone"></i> +90 (212) 555 42 42</li>
+            <li><i class="fas fa-envelope"></i> info@tekstilcraft.com</li>
+            <li><i class="fas fa-clock"></i> Pzt - Cmt: 09:00 - 18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 TextilCraft. Tüm hakları saklıdır.</p>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Sepetim (<span id="cartItemCount">0</span>)</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <i class="fas fa-shopping-bag"></i>
+        <p>Sepetiniz boş</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Toplam:</span>
+        <span id="cartTotal">₺0.00</span>
+      </div>
+      <a href="#" class="btn btn-primary">Ödemeye Geç</a>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

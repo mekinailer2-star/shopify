@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TextilCraft - Tüm tekstil ürünlerimizi keşfedin. Pamuk, ipek, keten ve yün kumaşlar.">
+  <title>Ürünler | TextilCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header scrolled" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">Tekstil<span>Craft</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="products.html" class="active">Ürünler</a></li>
+          <li><a href="about.html">Hakkımızda</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
+        <a href="#" id="cartToggle" class="cart-icon">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="hero-bg-pattern"></div>
+    <h1>Ürünlerimiz</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Ana Sayfa</a>
+      <span>/</span>
+      <span class="current">Ürünler</span>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section products-section">
+    <div class="container">
+      <!-- Filters -->
+      <div class="product-filters fade-in">
+        <button class="filter-btn active" data-filter="all">Tümü</button>
+        <button class="filter-btn" data-filter="pamuk">Pamuk</button>
+        <button class="filter-btn" data-filter="ipek">İpek</button>
+        <button class="filter-btn" data-filter="keten">Keten</button>
+        <button class="filter-btn" data-filter="yun">Yün</button>
+        <button class="filter-btn" data-filter="polyester">Polyester</button>
+      </div>
+
+      <!-- Shop Controls -->
+      <div class="shop-controls fade-in">
+        <p class="result-count">Toplam <strong>12</strong> ürün gösteriliyor</p>
+        <select class="sort-select" id="sortSelect">
+          <option value="default">Varsayılan Sıralama</option>
+          <option value="price-low">Fiyat: Düşükten Yükseğe</option>
+          <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
+          <option value="name">İsme Göre A-Z</option>
+          <option value="rating">En Yüksek Puan</option>
+        </select>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-page-grid">
+        <!-- Product 1 -->
+        <div class="product-card fade-in" data-category="pamuk" data-price="189.90" data-name="Organik Pamuk Kumaş">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=400&fit=crop" alt="Organik Pamuk Kumaş">
+            <span class="product-badge badge-new">Yeni</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Organik Pamuk Kumaş" data-price="189.90" data-img="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Pamuk</p>
+            <h3><a href="#">Organik Pamuk Kumaş</a></h3>
+            <div class="product-price">
+              <span class="current">₺189.90</span>
+              <span class="old">₺249.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(124)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card fade-in" data-category="ipek" data-price="459.90" data-name="Saf İpek Saten">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&h=400&fit=crop" alt="Saf İpek Saten">
+            <span class="product-badge badge-hot">Popüler</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Saf İpek Saten" data-price="459.90" data-img="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">İpek</p>
+            <h3><a href="#">Saf İpek Saten</a></h3>
+            <div class="product-price">
+              <span class="current">₺459.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span>(89)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card fade-in" data-category="keten" data-price="279.90" data-name="Premium Keten">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=400&fit=crop" alt="Premium Keten">
+            <span class="product-badge badge-sale">%30 İndirim</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Premium Keten" data-price="279.90" data-img="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Keten</p>
+            <h3><a href="#">Premium Keten</a></h3>
+            <div class="product-price">
+              <span class="current">₺279.90</span>
+              <span class="old">₺399.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span>(56)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card fade-in" data-category="yun" data-price="349.90" data-name="Merinos Yünü">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=400&h=400&fit=crop" alt="Merinos Yünü">
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Merinos Yünü" data-price="349.90" data-img="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Yün</p>
+            <h3><a href="#">Merinos Yünü</a></h3>
+            <div class="product-price">
+              <span class="current">₺349.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(72)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card fade-in" data-category="pamuk" data-price="159.90" data-name="Denim Kumaş">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop" alt="Denim Kumaş">
+            <span class="product-badge badge-new">Yeni</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Denim Kumaş" data-price="159.90" data-img="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Pamuk</p>
+            <h3><a href="#">Denim Kumaş</a></h3>
+            <div class="product-price">
+              <span class="current">₺159.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span>(45)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card fade-in" data-category="ipek" data-price="389.90" data-name="İpek Şifon">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=400&h=400&fit=crop" alt="İpek Şifon">
+            <span class="product-badge badge-sale">%20 İndirim</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="İpek Şifon" data-price="389.90" data-img="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">İpek</p>
+            <h3><a href="#">İpek Şifon</a></h3>
+            <div class="product-price">
+              <span class="current">₺389.90</span>
+              <span class="old">₺489.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span>(98)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card fade-in" data-category="keten" data-price="329.90" data-name="Fransız Keteni">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop" alt="Fransız Keteni">
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Fransız Keteni" data-price="329.90" data-img="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Keten</p>
+            <h3><a href="#">Fransız Keteni</a></h3>
+            <div class="product-price">
+              <span class="current">₺329.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(67)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card fade-in" data-category="yun" data-price="599.90" data-name="Kaşmir Yünü">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=400&h=400&fit=crop" alt="Kaşmir Yünü">
+            <span class="product-badge badge-hot">Popüler</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Kaşmir Yünü" data-price="599.90" data-img="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Yün</p>
+            <h3><a href="#">Kaşmir Yünü</a></h3>
+            <div class="product-price">
+              <span class="current">₺599.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span>(134)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card fade-in" data-category="polyester" data-price="129.90" data-name="Polyester Krep">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=400&fit=crop" alt="Polyester Krep">
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Polyester Krep" data-price="129.90" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Polyester</p>
+            <h3><a href="#">Polyester Krep</a></h3>
+            <div class="product-price">
+              <span class="current">₺129.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span>(38)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card fade-in" data-category="pamuk" data-price="219.90" data-name="Gabardin Kumaş">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1553531384-cc64ac80f931?w=400&h=400&fit=crop" alt="Gabardin Kumaş">
+            <span class="product-badge badge-sale">%15 İndirim</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Gabardin Kumaş" data-price="219.90" data-img="https://images.unsplash.com/photo-1553531384-cc64ac80f931?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Pamuk</p>
+            <h3><a href="#">Gabardin Kumaş</a></h3>
+            <div class="product-price">
+              <span class="current">₺219.90</span>
+              <span class="old">₺259.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(81)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card fade-in" data-category="ipek" data-price="529.90" data-name="Dupion İpek">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop" alt="Dupion İpek">
+            <span class="product-badge badge-new">Yeni</span>
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Dupion İpek" data-price="529.90" data-img="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">İpek</p>
+            <h3><a href="#">Dupion İpek</a></h3>
+            <div class="product-price">
+              <span class="current">₺529.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span>(42)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card fade-in" data-category="polyester" data-price="149.90" data-name="Scuba Kumaş">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop" alt="Scuba Kumaş">
+            <div class="product-actions">
+              <button class="quick-view-btn" title="Hızlı Bakış"><i class="fas fa-eye"></i></button>
+              <button class="wishlist-btn" title="Favorilere Ekle"><i class="fas fa-heart"></i></button>
+              <button class="add-to-cart-btn" title="Sepete Ekle" data-name="Scuba Kumaş" data-price="149.90" data-img="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=100&h=100&fit=crop"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Polyester</p>
+            <h3><a href="#">Scuba Kumaş</a></h3>
+            <div class="product-price">
+              <span class="current">₺149.90</span>
+            </div>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+              <span>(29)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination fade-in">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#"><i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container fade-in">
+      <h2>Bültenimize Abone Olun</h2>
+      <p>Yeni koleksiyonlar ve özel indirimlerden ilk siz haberdar olun</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="E-posta adresiniz" required>
+        <button type="submit" class="btn">Abone Ol</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">Tekstil<span>Craft</span></div>
+          <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Linkler</h4>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="products.html">Ürünler</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kategoriler</h4>
+          <ul>
+            <li><a href="products.html">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html">İpek Kumaşlar</a></li>
+            <li><a href="products.html">Keten Kumaşlar</a></li>
+            <li><a href="products.html">Yün Kumaşlar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Tekstil Merkezi, Osmanbey Cad. No:42, İstanbul, Türkiye</li>
+            <li><i class="fas fa-phone"></i> +90 (212) 555 42 42</li>
+            <li><i class="fas fa-envelope"></i> info@tekstilcraft.com</li>
+            <li><i class="fas fa-clock"></i> Pzt - Cmt: 09:00 - 18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 TextilCraft. Tüm hakları saklıdır.</p>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Sepetim (<span id="cartItemCount">0</span>)</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <i class="fas fa-shopping-bag"></i>
+        <p>Sepetiniz boş</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Toplam:</span>
+        <span id="cartTotal">₺0.00</span>
+      </div>
+      <a href="#" class="btn btn-primary">Ödemeye Geç</a>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
