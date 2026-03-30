@@ -110,34 +110,34 @@
         <p>En popüler tekstil kategorilerimizi keşfedin</p>
       </div>
       <div class="categories-grid">
-        <div class="category-card fade-in">
+        <a href="products.html?filter=pamuk" class="category-card fade-in">
           <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=500&fit=crop" alt="Pamuklu Kumaşlar" class="category-image">
           <div class="category-overlay">
             <h3>Pamuklu Kumaşlar</h3>
             <p>Doğal ve nefes alan</p>
           </div>
-        </div>
-        <div class="category-card fade-in">
+        </a>
+        <a href="products.html?filter=ipek" class="category-card fade-in">
           <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&h=500&fit=crop" alt="İpek Kumaşlar" class="category-image">
           <div class="category-overlay">
             <h3>İpek Kumaşlar</h3>
             <p>Lüks ve zarif</p>
           </div>
-        </div>
-        <div class="category-card fade-in">
+        </a>
+        <a href="products.html?filter=keten" class="category-card fade-in">
           <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=500&fit=crop" alt="Keten Kumaşlar" class="category-image">
           <div class="category-overlay">
             <h3>Keten Kumaşlar</h3>
             <p>Dayanıklı ve şık</p>
           </div>
-        </div>
-        <div class="category-card fade-in">
+        </a>
+        <a href="products.html?filter=yun" class="category-card fade-in">
           <img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=400&h=500&fit=crop" alt="Yün Kumaşlar" class="category-image">
           <div class="category-overlay">
             <h3>Yün Kumaşlar</h3>
             <p>Sıcak ve konforlu</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -522,11 +522,11 @@
           <div class="footer-logo">Tekstil<span>Craft</span></div>
           <p>1999'dan beri tekstil sektörünün güvenilir adresi. Kaliteli kumaşlar ve profesyonel hizmet anlayışımızla sizlere en iyisini sunuyoruz.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com/company/tekstilcraft" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -541,10 +541,10 @@
         <div class="footer-col">
           <h4>Kategoriler</h4>
           <ul>
-            <li><a href="products.html">Pamuklu Kumaşlar</a></li>
-            <li><a href="products.html">İpek Kumaşlar</a></li>
-            <li><a href="products.html">Keten Kumaşlar</a></li>
-            <li><a href="products.html">Yün Kumaşlar</a></li>
+            <li><a href="products.html?filter=pamuk">Pamuklu Kumaşlar</a></li>
+            <li><a href="products.html?filter=ipek">İpek Kumaşlar</a></li>
+            <li><a href="products.html?filter=keten">Keten Kumaşlar</a></li>
+            <li><a href="products.html?filter=yun">Yün Kumaşlar</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -587,8 +587,57 @@
         <span>Toplam:</span>
         <span id="cartTotal">₺0.00</span>
       </div>
-      <a href="#" class="btn btn-primary">Ödemeye Geç</a>
+      <a href="checkout.html" class="btn btn-primary">Ödemeye Geç</a>
     </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewOverlay"></div>
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-content">
+      <div class="modal-image">
+        <img src="" alt="">
+      </div>
+      <div class="modal-details">
+        <button class="modal-close" id="quickViewClose">&times;</button>
+        <p class="modal-category"></p>
+        <h2></h2>
+        <div class="modal-rating"></div>
+        <div class="modal-price">
+          <span class="current"></span>
+          <span class="old"></span>
+        </div>
+        <p class="modal-desc">Premium kalite kumaş, doğal liflerden üretilmiştir. Konfeksiyon, ev tekstili ve tasarım projeleri için idealdir. Yüksek dayanıklılık ve konfor sunar.</p>
+        <div class="modal-options">
+          <label>Renk Seçenekleri</label>
+          <div class="color-options">
+            <span style="background:#2c3e50" class="selected" title="Lacivert"></span>
+            <span style="background:#c9a96e" title="Altın"></span>
+            <span style="background:#7f8c8d" title="Gri"></span>
+            <span style="background:#ecf0f1" title="Beyaz"></span>
+          </div>
+        </div>
+        <div class="modal-add-cart">
+          <div class="qty-input">
+            <button class="qty-minus">-</button>
+            <span class="qty-value">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+          <button class="btn btn-primary modal-add-to-cart"><i class="fas fa-shopping-cart" style="margin-right:8px"></i>Sepete Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose">&times;</button>
+    <h2>Ne Aramıştınız?</h2>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results" id="searchResults"></div>
   </div>
 
   <!-- Back to Top -->

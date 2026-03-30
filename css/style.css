@@ -1827,6 +1827,326 @@ p {
   font-size: 1rem;
 }
 
+/* ---------- Search Overlay ---------- */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 46, 0.97);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-overlay .search-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.search-overlay .search-close:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.search-overlay h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  font-family: var(--font-heading);
+}
+
+.search-overlay .search-input-wrap {
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.search-overlay .search-input-wrap input {
+  width: 100%;
+  padding: 18px 25px;
+  padding-right: 50px;
+  font-size: 1.1rem;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-family: var(--font-body);
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-overlay .search-input-wrap input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.search-overlay .search-input-wrap input:focus {
+  border-color: var(--accent);
+}
+
+.search-overlay .search-input-wrap .search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 1.1rem;
+}
+
+.search-results {
+  width: 90%;
+  max-width: 600px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.search-hint,
+.search-no-result {
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: var(--transition);
+}
+
+.search-result-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.search-result-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-info h4 {
+  color: white;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  margin-bottom: 3px;
+}
+
+.search-result-info p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+}
+
+.search-result-price {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.search-add-cart {
+  padding: 8px 16px !important;
+  font-size: 0.8rem !important;
+  white-space: nowrap;
+}
+
+/* ---------- Checkout Page ---------- */
+.checkout-section {
+  padding: 40px 0 80px;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.checkout-form h3,
+.checkout-summary h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border);
+}
+
+.checkout-form .form-group {
+  margin-bottom: 20px;
+}
+
+.checkout-form .form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.checkout-form .form-group input,
+.checkout-form .form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.checkout-form .form-group input:focus,
+.checkout-form .form-group select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
+}
+
+.checkout-summary {
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 12px;
+  position: sticky;
+  top: 100px;
+}
+
+.checkout-items {
+  margin-bottom: 20px;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.checkout-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.checkout-item-info {
+  flex: 1;
+}
+
+.checkout-item-info h4 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.checkout-item-info p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.checkout-item-price {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.checkout-totals {
+  padding-top: 15px;
+}
+
+.checkout-totals .total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.95rem;
+}
+
+.checkout-totals .total-row.grand-total {
+  border-top: 2px solid var(--text-dark);
+  margin-top: 10px;
+  padding-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.checkout-totals .grand-total span:last-child {
+  color: var(--accent);
+}
+
+.payment-methods {
+  margin-top: 20px;
+}
+
+.payment-methods label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.payment-option:hover,
+.payment-option.selected {
+  border-color: var(--accent);
+  background: rgba(201, 169, 110, 0.05);
+}
+
+.payment-option input[type="radio"] {
+  accent-color: var(--accent);
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .checkout-grid { grid-template-columns: 1fr; }
+  .checkout-summary { position: static; }
+  .search-overlay { padding-top: 80px; }
+}
+
 /* ---------- Animations ---------- */
 .fade-in {
   opacity: 0;
