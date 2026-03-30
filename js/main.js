@@ -579,6 +579,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (quickViewClose) quickViewClose.addEventListener('click', closeQuickView);
   if (quickViewOverlay) quickViewOverlay.addEventListener('click', closeQuickView);
+  if (quickViewModal) {
+    quickViewModal.addEventListener('click', function (e) {
+      if (e.target === quickViewModal) closeQuickView();
+    });
+  }
 
   // Modal qty controls
   if (quickViewModal) {

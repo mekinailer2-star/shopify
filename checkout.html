@@ -306,7 +306,7 @@
         if (!grouped[key]) {
           grouped[key] = { name: cart[i].name, price: cart[i].price, img: cart[i].img, qty: 0 };
         }
-        grouped[key].qty++;
+        grouped[key].qty += (cart[i].qty || 1);
       }
 
       for (var k in grouped) {
@@ -394,6 +394,18 @@
           if (!firstName || !lastName || !email || !phone || !address || !city) {
             alert('Lütfen tüm zorunlu alanları doldurun.');
             return;
+          }
+
+          // Validate credit card fields if credit card is selected
+          var selectedPayment = document.querySelector('input[name="payment"]:checked');
+          if (selectedPayment && selectedPayment.value === 'credit') {
+            var cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+            var cardExpiry = document.getElementById('cardExpiry').value.trim();
+            var cardCvv = document.getElementById('cardCvv').value.trim();
+            if (!cardNumber || cardNumber.length < 16 || !cardExpiry || cardExpiry.length < 5 || !cardCvv || cardCvv.length < 3) {
+              alert('Lütfen kart bilgilerini eksiksiz doldurun.');
+              return;
+            }
           }
 
           // Simulate order
