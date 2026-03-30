@@ -446,25 +446,29 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- FAQ Toggle ---------- */
-  var faqItems = document.querySelectorAll('.faq-item');
-  for (var f = 0; f < faqItems.length; f++) {
-    faqItems[f].addEventListener('click', function () {
-      var answer = this.querySelector('.faq-answer');
+  var faqQuestions = document.querySelectorAll('.faq-question');
+  for (var f = 0; f < faqQuestions.length; f++) {
+    faqQuestions[f].addEventListener('click', function (e) {
+      e.stopPropagation();
+      var faqItem = this.closest('.faq-item');
+      if (!faqItem) return;
+      var answer = faqItem.querySelector('.faq-answer');
       var icon = this.querySelector('.fa-chevron-down');
-      var isOpen = this.classList.contains('open');
+      var isOpen = faqItem.classList.contains('open');
+      var allFaqItems = document.querySelectorAll('.faq-item');
 
       // Close all
-      for (var g = 0; g < faqItems.length; g++) {
-        faqItems[g].classList.remove('open');
-        var ans = faqItems[g].querySelector('.faq-answer');
-        var ic = faqItems[g].querySelector('.fa-chevron-down');
+      for (var g = 0; g < allFaqItems.length; g++) {
+        allFaqItems[g].classList.remove('open');
+        var ans = allFaqItems[g].querySelector('.faq-answer');
+        var ic = allFaqItems[g].querySelector('.fa-chevron-down');
         if (ans) ans.style.maxHeight = '0';
         if (ic) ic.style.transform = 'rotate(0deg)';
       }
 
       // Open current if was closed
       if (!isOpen) {
-        this.classList.add('open');
+        faqItem.classList.add('open');
         if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
         if (icon) icon.style.transform = 'rotate(180deg)';
       }
@@ -604,6 +608,17 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
+    // Color option selection
+    var colorOptions = quickViewModal.querySelectorAll('.color-options span');
+    for (var co = 0; co < colorOptions.length; co++) {
+      colorOptions[co].addEventListener('click', function () {
+        for (var ci = 0; ci < colorOptions.length; ci++) {
+          colorOptions[ci].classList.remove('selected');
+        }
+        this.classList.add('selected');
+      });
+    }
+
     var modalAddBtn = quickViewModal.querySelector('.modal-add-to-cart');
     if (modalAddBtn) {
       modalAddBtn.addEventListener('click', function () {
@@ -611,9 +626,24 @@ document.addEventListener('DOMContentLoaded', function () {
         var price = this.getAttribute('data-price');
         var img = this.getAttribute('data-img');
         var qty = parseInt(qtyVal.textContent, 10) || 1;
-        for (var q = 0; q < qty; q++) {
-          addToCart(name, price, img);
+
+        // Add item with correct quantity without looping
+        var existingIndex = -1;
+        for (var ei = 0; ei < cart.length; ei++) {
+          if (cart[ei].name === name) {
+            existingIndex = ei;
+            break;
+          }
         }
+        if (existingIndex !== -1) {
+          cart[existingIndex].qty += qty;
+        } else {
+          cart.push({ name: name, price: parseFloat(price), img: img, qty: qty });
+        }
+        saveCart();
+        updateCartUI();
+        openCart();
+        showNotification(name + ' sepete eklendi!');
         closeQuickView();
       });
     }
