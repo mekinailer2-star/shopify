@@ -1124,6 +1124,13 @@ p {
   color: rgba(255, 255, 255, 0.3);
 }
 
+.footer-bottom .payment-icons .troy-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  vertical-align: middle;
+}
+
 /* ---------- Back to Top ---------- */
 .back-to-top {
   position: fixed;
