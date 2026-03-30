@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Header Scroll Effect ---------- */
-  const header = document.getElementById('header');
+  var header = document.getElementById('header');
   function handleScroll() {
     if (!header) return;
     if (window.scrollY > 80) {
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
   /* ---------- Mobile Menu ---------- */
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', function () {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         backToTop.classList.remove('visible');
       }
-    });
+    }, { passive: true });
 
     backToTop.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  window.addEventListener('scroll', animateOnScroll);
+  window.addEventListener('scroll', animateOnScroll, { passive: true });
   animateOnScroll(); // Run on load
 
   /* ---------- Counter Animation ---------- */
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  window.addEventListener('scroll', animateCounters);
+  window.addEventListener('scroll', animateCounters, { passive: true });
   animateCounters();
 
   /* ---------- Product Filter ---------- */
@@ -209,7 +209,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Shopping Cart ---------- */
-  var cart = JSON.parse(localStorage.getItem('textilcraft_cart') || '[]');
+  var cart;
+  try {
+    cart = JSON.parse(localStorage.getItem('textilcraft_cart') || '[]');
+    if (!Array.isArray(cart)) cart = [];
+  } catch (e) {
+    cart = [];
+  }
 
   var cartToggle = document.getElementById('cartToggle');
   var cartSidebar = document.getElementById('cartSidebar');
@@ -270,17 +276,19 @@ document.addEventListener('DOMContentLoaded', function () {
     var html = '';
     for (var j = 0; j < cart.length; j++) {
       var item = cart[j];
+      var safeName = escapeHtml(item.name);
+      var safeImg = escapeHtml(item.img);
       html += '<div class="cart-item" data-index="' + j + '">' +
-        '<img src="' + item.img + '" alt="' + item.name + '">' +
+        '<img src="' + safeImg + '" alt="' + safeName + '">' +
         '<div class="cart-item-info">' +
-        '<h4>' + item.name + '</h4>' +
+        '<h4>' + safeName + '</h4>' +
         '<p class="cart-item-price">₺' + item.price.toFixed(2) + '</p>' +
         '<div class="cart-item-qty">' +
-        '<button class="qty-decrease" data-index="' + j + '">-</button>' +
+        '<button type="button" class="qty-decrease" data-index="' + j + '" aria-label="Azalt">-</button>' +
         '<span>' + item.qty + '</span>' +
-        '<button class="qty-increase" data-index="' + j + '">+</button>' +
+        '<button type="button" class="qty-increase" data-index="' + j + '" aria-label="Arttır">+</button>' +
         '</div></div>' +
-        '<button class="cart-item-remove" data-index="' + j + '"><i class="fas fa-trash-alt"></i></button>' +
+        '<button type="button" class="cart-item-remove" data-index="' + j + '" aria-label="Kaldır"><i class="fas fa-trash-alt"></i></button>' +
         '</div>';
     }
     cartItems.innerHTML = html;
@@ -326,11 +334,12 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('textilcraft_cart', JSON.stringify(cart));
   }
 
-  function addToCart(name, price, img) {
+  function addToCart(name, price, img, qty) {
+    var addQty = qty || 1;
     // Check if item already exists
     for (var i = 0; i < cart.length; i++) {
       if (cart[i].name === name) {
-        cart[i].qty++;
+        cart[i].qty += addQty;
         saveCart();
         updateCartUI();
         openCart();
@@ -338,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
     }
-    cart.push({ name: name, price: parseFloat(price), img: img, qty: 1 });
+    cart.push({ name: name, price: parseFloat(price), img: img, qty: addQty });
     saveCart();
     updateCartUI();
     openCart();
@@ -375,6 +384,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- HTML Escaping ---------- */
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   /* ---------- Notification Toast ---------- */
   function showNotification(message) {
     // Remove existing notifications
@@ -387,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'background: #1a1a2e; color: white; padding: 15px 30px; border-radius: 8px; z-index: 99999; ' +
       'font-family: "Poppins", sans-serif; font-size: 0.9rem; box-shadow: 0 5px 20px rgba(0,0,0,0.2); ' +
       'transition: transform 0.4s ease; display: flex; align-items: center; gap: 10px;';
-    toast.innerHTML = '<i class="fas fa-check-circle" style="color: #c9a96e;"></i>' + message;
+    toast.innerHTML = '<i class="fas fa-check-circle" style="color: #c9a96e;"></i>' + escapeHtml(message);
     document.body.appendChild(toast);
 
     setTimeout(function () {
@@ -448,27 +464,34 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- FAQ Toggle ---------- */
   var faqItems = document.querySelectorAll('.faq-item');
   for (var f = 0; f < faqItems.length; f++) {
-    faqItems[f].addEventListener('click', function () {
-      var answer = this.querySelector('.faq-answer');
-      var icon = this.querySelector('.fa-chevron-down');
-      var isOpen = this.classList.contains('open');
+    var faqQuestion = faqItems[f].querySelector('.faq-question');
+    if (faqQuestion) {
+      // Remove inline onclick to avoid conflict
+      faqQuestion.removeAttribute('onclick');
+      faqQuestion.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var parentItem = this.closest('.faq-item');
+        var answer = parentItem.querySelector('.faq-answer');
+        var icon = parentItem.querySelector('.fa-chevron-down');
+        var isOpen = parentItem.classList.contains('open');
 
-      // Close all
-      for (var g = 0; g < faqItems.length; g++) {
-        faqItems[g].classList.remove('open');
-        var ans = faqItems[g].querySelector('.faq-answer');
-        var ic = faqItems[g].querySelector('.fa-chevron-down');
-        if (ans) ans.style.maxHeight = '0';
-        if (ic) ic.style.transform = 'rotate(0deg)';
-      }
+        // Close all
+        for (var g = 0; g < faqItems.length; g++) {
+          faqItems[g].classList.remove('open');
+          var ans = faqItems[g].querySelector('.faq-answer');
+          var ic = faqItems[g].querySelector('.fa-chevron-down');
+          if (ans) ans.style.maxHeight = '0';
+          if (ic) ic.style.transform = 'rotate(0deg)';
+        }
 
-      // Open current if was closed
-      if (!isOpen) {
-        this.classList.add('open');
-        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
-        if (icon) icon.style.transform = 'rotate(180deg)';
-      }
-    });
+        // Open current if was closed
+        if (!isOpen) {
+          parentItem.classList.add('open');
+          if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
   }
 
   /* ---------- Smooth Scroll for Anchor Links ---------- */
@@ -611,9 +634,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var price = this.getAttribute('data-price');
         var img = this.getAttribute('data-img');
         var qty = parseInt(qtyVal.textContent, 10) || 1;
-        for (var q = 0; q < qty; q++) {
-          addToCart(name, price, img);
-        }
+        addToCart(name, price, img, qty);
         closeQuickView();
       });
     }
@@ -692,14 +713,17 @@ document.addEventListener('DOMContentLoaded', function () {
       var html = '';
       for (var i = 0; i < results.length; i++) {
         var p = results[i];
+        var safeName = escapeHtml(p.name);
+        var safeCat = escapeHtml(p.category);
+        var safeImg = escapeHtml(p.img);
         html += '<div class="search-result-item">' +
-          '<img src="' + p.img + '" alt="' + p.name + '">' +
+          '<img src="' + safeImg + '" alt="' + safeName + '">' +
           '<div class="search-result-info">' +
-          '<h4>' + p.name + '</h4>' +
-          '<p>' + p.category + '</p>' +
-          '<span class="search-result-price">₺' + p.price + '</span>' +
+          '<h4>' + safeName + '</h4>' +
+          '<p>' + safeCat + '</p>' +
+          '<span class="search-result-price">₺' + escapeHtml(p.price) + '</span>' +
           '</div>' +
-          '<button class="btn btn-primary search-add-cart" data-name="' + p.name + '" data-price="' + p.price + '" data-img="' + p.img + '">Sepete Ekle</button>' +
+          '<button type="button" class="btn btn-primary search-add-cart" data-name="' + safeName + '" data-price="' + escapeHtml(p.price) + '" data-img="' + safeImg + '">Sepete Ekle</button>' +
           '</div>';
       }
       searchResults.innerHTML = html;

@@ -26,12 +26,12 @@
         </ul>
       </nav>
       <div class="nav-icons">
-        <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
-        <a href="#" id="cartToggle" class="cart-icon">
+        <a href="#" id="searchToggle" aria-label="Arama"><i class="fas fa-search"></i></a>
+        <a href="#" id="cartToggle" class="cart-icon" aria-label="Sepet">
           <i class="fas fa-shopping-bag"></i>
           <span class="cart-count" id="cartCount">0</span>
         </a>
-        <div class="menu-toggle" id="menuToggle">
+        <div class="menu-toggle" id="menuToggle" role="button" aria-label="Menü" tabindex="0">
           <span></span>
           <span></span>
           <span></span>
@@ -246,7 +246,7 @@
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
       <h3>Sepetim (<span id="cartItemCount">0</span>)</h3>
-      <button class="cart-close" id="cartClose">&times;</button>
+      <button class="cart-close" id="cartClose" aria-label="Sepeti Kapat">&times;</button>
     </div>
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
@@ -265,17 +265,17 @@
 
   <!-- Search Overlay -->
   <div class="search-overlay" id="searchOverlay">
-    <button class="search-close" id="searchClose">&times;</button>
+    <button class="search-close" id="searchClose" aria-label="Aramayı Kapat">&times;</button>
     <h2>Ne Aramıştınız?</h2>
     <div class="search-input-wrap">
-      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın..." aria-label="Ürün ara">
       <i class="fas fa-search search-icon"></i>
     </div>
     <div class="search-results" id="searchResults"></div>
   </div>
 
   <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop">
+  <button class="back-to-top" id="backToTop" aria-label="Sayfa başına dön">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -283,7 +283,13 @@
   <script>
     /* Checkout Page Logic */
     (function () {
-      var cart = JSON.parse(localStorage.getItem('textilcraft_cart') || '[]');
+      var cart;
+      try {
+        cart = JSON.parse(localStorage.getItem('textilcraft_cart') || '[]');
+        if (!Array.isArray(cart)) cart = [];
+      } catch (e) {
+        cart = [];
+      }
 
       if (cart.length === 0) {
         document.querySelector('.checkout-grid').innerHTML =
@@ -309,14 +315,21 @@
         grouped[key].qty += (cart[i].qty || 1);
       }
 
+      function escHtml(str) {
+        var d = document.createElement('div');
+        d.appendChild(document.createTextNode(str));
+        return d.innerHTML;
+      }
+
       for (var k in grouped) {
+        if (!grouped.hasOwnProperty(k)) continue;
         var item = grouped[k];
         var itemTotal = item.price * item.qty;
         subtotal += itemTotal;
         itemsHtml += '<div class="checkout-item">' +
-          '<img src="' + item.img + '" alt="' + item.name + '">' +
+          '<img src="' + escHtml(item.img) + '" alt="' + escHtml(item.name) + '">' +
           '<div class="checkout-item-info">' +
-          '<h4>' + item.name + '</h4>' +
+          '<h4>' + escHtml(item.name) + '</h4>' +
           '<p>Adet: ' + item.qty + '</p>' +
           '</div>' +
           '<span class="checkout-item-price">₺' + itemTotal.toFixed(2) + '</span>' +
@@ -416,7 +429,7 @@
             '<i class="fas fa-check-circle" style="font-size: 5rem; color: #27ae60; margin-bottom: 20px;"></i>' +
             '<h2 style="margin-bottom: 15px;">Siparişiniz Alındı!</h2>' +
             '<p style="color: var(--text-muted); margin-bottom: 10px;">Sipariş numaranız: <strong>TC-' + Date.now().toString().slice(-6) + '</strong></p>' +
-            '<p style="color: var(--text-muted); margin-bottom: 25px;">Sipariş detayları <strong>' + email + '</strong> adresine gönderildi.</p>' +
+            '<p style="color: var(--text-muted); margin-bottom: 25px;">Sipariş detayları <strong>' + escHtml(email) + '</strong> adresine gönderildi.</p>' +
             '<a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>' +
             '&nbsp;&nbsp;' +
             '<a href="products.html" class="btn btn-dark">Alışverişe Devam Et</a></div>';

@@ -31,12 +31,12 @@
         </ul>
       </nav>
       <div class="nav-icons">
-        <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
-        <a href="#" id="cartToggle" class="cart-icon">
+        <a href="#" id="searchToggle" aria-label="Arama"><i class="fas fa-search"></i></a>
+        <a href="#" id="cartToggle" class="cart-icon" aria-label="Sepet">
           <i class="fas fa-shopping-bag"></i>
           <span class="cart-count" id="cartCount">0</span>
         </a>
-        <div class="menu-toggle" id="menuToggle">
+        <div class="menu-toggle" id="menuToggle" role="button" aria-label="Menü" tabindex="0">
           <span></span>
           <span></span>
           <span></span>
@@ -388,8 +388,8 @@
       <h2>Bültenimize Abone Olun</h2>
       <p>Yeni koleksiyonlar ve özel indirimlerden ilk siz haberdar olun</p>
       <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="E-posta adresiniz" required>
-        <button type="submit" class="btn">Abone Ol</button>
+          <input type="email" placeholder="E-posta adresiniz" required aria-label="E-posta adresiniz">
+          <button type="submit" class="btn">Abone Ol</button>
       </form>
     </div>
   </section>
@@ -454,7 +454,7 @@
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
       <h3>Sepetim (<span id="cartItemCount">0</span>)</h3>
-      <button class="cart-close" id="cartClose">&times;</button>
+      <button class="cart-close" id="cartClose" aria-label="Sepeti Kapat">&times;</button>
     </div>
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
@@ -479,7 +479,7 @@
         <img src="" alt="">
       </div>
       <div class="modal-details">
-        <button class="modal-close" id="quickViewClose">&times;</button>
+        <button class="modal-close" id="quickViewClose" aria-label="Kapat">&times;</button>
         <p class="modal-category"></p>
         <h2></h2>
         <div class="modal-rating"></div>
@@ -499,9 +499,9 @@
         </div>
         <div class="modal-add-cart">
           <div class="qty-input">
-            <button class="qty-minus">-</button>
+            <button type="button" class="qty-minus" aria-label="Azalt">-</button>
             <span class="qty-value">1</span>
-            <button class="qty-plus">+</button>
+            <button type="button" class="qty-plus" aria-label="Arttır">+</button>
           </div>
           <button class="btn btn-primary modal-add-to-cart"><i class="fas fa-shopping-cart" style="margin-right:8px"></i>Sepete Ekle</button>
         </div>
@@ -511,17 +511,17 @@
 
   <!-- Search Overlay -->
   <div class="search-overlay" id="searchOverlay">
-    <button class="search-close" id="searchClose">&times;</button>
+    <button class="search-close" id="searchClose" aria-label="Aramayı Kapat">&times;</button>
     <h2>Ne Aramıştınız?</h2>
     <div class="search-input-wrap">
-      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın...">
+      <input type="text" id="searchInput" placeholder="Ürün adı veya kategori yazın..." aria-label="Ürün ara">
       <i class="fas fa-search search-icon"></i>
     </div>
     <div class="search-results" id="searchResults"></div>
   </div>
 
   <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop">
+  <button class="back-to-top" id="backToTop" aria-label="Sayfa başına dön">
     <i class="fas fa-arrow-up"></i>
   </button>
 
